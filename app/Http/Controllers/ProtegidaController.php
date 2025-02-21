@@ -116,3 +116,4 @@ class ProtegidaController extends Controller
         return redirect()->route('protegida_inicio');
     }
 }
+

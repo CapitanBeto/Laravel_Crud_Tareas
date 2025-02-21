@@ -17,7 +17,7 @@
     <x-flash></x-flash>
     <p class="d-flex justify-content-end">
         <a href="{{ route('tareas_crear') }}" class="btn btn-success">
-            Crear Tarea
+            CREAR TAREA
         </a>
     </p>
     <p class="d-flex justify-content-end">
