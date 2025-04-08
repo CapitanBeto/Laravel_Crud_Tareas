@@ -1,7 +1,7 @@
 @extends('../layouts.frontend')
 
 @section('content')
-<a href="{{route('tareas_paginacion')}}" class="btn btn-warning">volver</a>
+<a href="{{ route('tareas_inicio') }}" class="btn btn-warning">volver</a>
     <h1>Registro</h1>
     <x-flash />
     @if (session('mensaje'))

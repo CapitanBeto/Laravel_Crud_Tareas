@@ -17,6 +17,7 @@ class apiCrudController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
         $datos = ListaTareas::orderBy('id', 'desc')->get();

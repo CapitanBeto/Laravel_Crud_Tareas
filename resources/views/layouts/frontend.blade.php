@@ -10,99 +10,133 @@
   <link href="{{asset('css/jquery.alerts.min.css')}}" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&amp;display=swap" rel="stylesheet"/>
   <link href="{{asset('css/blog.css')}}" rel="stylesheet"/>
-  <style>
-    body, html {
-        overflow-x: hidden;
-    }
+  <style>/* Additional Dark Mode Styles for Tables */
+/* Default light mode styles */
+body {
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease;
+}
 
-    img {
-        max-width: 100%;
-        height: auto;
-    }
+/* Dark mode styles */
+body.dark-mode {
+  background-color: black;
+  color: white;
+}
 
-    .suggestion-bubble {
-        display: none;
-        position: absolute;
-        background-color: #f8f9fa;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 10px;
-        width: 220px;
-        text-align: center;
-        z-index: 10;
-    }
+/* Dark mode styles for footer */
+body.dark-mode footer {
+  background-color: #222;  /* Dark background for footer */
+  color: white;            /* Light text color for footer */
+}
 
-    .suggestion-bubble .arrow {
-        position: absolute;
-        bottom: -10px;
-        left: 20px;
-        width: 0;
-        height: 0;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 10px solid #f8f9fa;
-    }
+body.dark-mode footer p {
+  color: white;            /* Light text color for the paragraph inside footer */
+}
+
+/* Optional: Style the footer links for dark mode */
+body.dark-mode footer a {
+  color: #f8f9fa; /* Light color for links in footer */
+}
+
+body.dark-mode footer a:hover {
+  color: #ddd;  /* Lighter color for hover effect */
+}
+
+/* Optional: Adjust button styles for dark mode */
+button.dark-mode {
+  background-color: gray;
+  color: black;
+}
+
+/* Table dark mode styles */
+body.dark-mode table {
+  background-color: #444; /* Dark table background */
+  color: white;            /* White text */
+}
+
+body.dark-mode th,
+body.dark-mode td {
+  background-color: #555; /* Darker row colors */
+}
+
+body.dark-mode th {
+  color: #f8f9fa; /* Light color for the table headers */
+}
+
+/* Optional: Adjust footer and other elements for dark mode */
+body.dark-mode footer {
+  background-color: #222 !important;
+  color: #ddd !important;
+}
+
   </style>
-
-  
 </head>
+
 <body>
-  
   <div class="container">
-    <header class="border-bottom lh-1 py-3">
+    <header class="border-bottom lh-1 py-1">
       <div class="row flex-nowrap justify-content-between align-items-center">
-        <div class="col-4 pt-1"></div>
+        <div class="col-1 pt-1 text-start">
+          <button
+            type="button"
+            class="btn btn-dark"
+            id="oscuro"
+            href="javascript:void(0);"
+            onclick="modo()"
+          >
+            Modo Oscuro
+          </button>
+        </div>
+        <div class="col-3 pt-1"></div>
+        
         @if(Auth::check())
-        <div class="col-4 text-center">
+        <div class="col-3 text-center">
           <a class="blog-header-logo text-body-emphasis text-decoration-none" href="{{ route('tareas_paginacion') }}">
             <img src="{{ asset('/img/thps3.png') }}" width="200px" />
           </a>
         </div>
-        
         @else
-        <div class="col-4 text-center">
+        <div class="col-3 text-center">
           <a class="blog-header-logo text-body-emphasis text-decoration-none" href="{{ route('tareas_inicio') }}">
             <img src="{{ asset('/img/thps3.png') }}" width="200px" />
           </a>
         </div>
         @endif
-        <div class="col-4 pt-1 text-end">
 
+        <div class="col-4 pt-1 text-end">
           @if(Auth::check())
-          
             <a >Hola {{ Auth::user()->name }} ({{ session('perfil') }})</a>
             <br><br>
             <button
               type="button"
               class="btn btn-danger"
-              href="javascript:void(0);" onclick="confirmaAlert('Vas a salir de la sesión', '{{route('acceso_salir')}}')"
+              href="javascript:void(0);"
+              onclick="confirmaAlert('Vas a salir de la sesión', '{{route('acceso_salir')}}')"
             >
               Cerrar sesión
             </button>
-            
-            
-            
+          </div>
           @endif
-            
-
+      </div>
     </header>
 
-
-
-    
+    <!-- Main Content Section -->
+    <main>
       @yield('content')
     </main>
 
     <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
-      <p>Todos los derechos reservados - desarrollado por Francisco Barrena
-        
-      </p>
-      <script src="{{asset('js/jquery-2.0.0.min.js')}}"></script>
-      <script src="{{asset('js/bootstrap.js')}}"></script>
-      <script src="{{asset('js/jquery.alerts.min.js')}}"></script>
-      <script src="{{asset('js/funciones.js')}}?id={{ csrf_token() }}"></script>
-      @stack('js')
+      <p>Todos los derechos reservados - desarrollado por Francisco Barrena</p>
     </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="{{asset('js/jquery-2.0.0.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="{{asset('js/jquery.alerts.min.js')}}"></script>
+    <script src="{{asset('js/funciones.js')}}?id={{ csrf_token() }}"></script>
+
+
   </div>
 </body>
 </html>

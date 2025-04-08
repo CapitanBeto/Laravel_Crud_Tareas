@@ -20,6 +20,8 @@
         <a href="{{route('acceso_registro')}}" class = "btn btn-warning" name="boton">Registro</a>
         <div class= division></div>
         <a href="{{route('acceso_login')}}" class = "btn btn-success" name="boton">Login</a>
+        <div class= division></div>
+        <a href="{{route('acceso_login')}}" class = "btn btn-primary" name="boton">Home</a>
       </nav>
       <br>
 

@@ -65,4 +65,33 @@ function carga_ajax_get(ruta, valor1, div) {
          }
      });
  }
- 
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    if (localStorage.getItem("Modoscuro") === "activo") {
+        document.body.classList.add("dark-mode");
+        document.getElementById("oscuro").textContent = "Modo Claro"; 
+    } else {
+        document.body.classList.remove("dark-mode");
+        document.getElementById("oscuro").textContent = "Modo Oscuro"; 
+    }
+});
+
+function modo() {
+    const oscuroButton = document.getElementById("oscuro");
+
+      document.body.classList.toggle("dark-mode");
+
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("Modoscuro", "activo");
+        oscuroButton.textContent = "Modo Claro"; 
+    } else {
+        localStorage.setItem("Modoscuro", "inactivo");
+        oscuroButton.textContent = "Modo Oscuro";
+    }
+}
+
+
+
